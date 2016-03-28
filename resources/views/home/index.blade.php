@@ -126,13 +126,14 @@
     <script type="text/javascript">
         $(function () {
            $("#jsondecode").click(function () {
-               var text = $(".jsontext").eq(0).html();
+               var text = $(".jsontext").eq(0).val();
+               alert(text);
                $.ajax({
                    type:'get',
-                   data:text,
+                   data:'text='+text,
                    url:'/json/decode',
                    success: function (data) {
-                       alert(data.data);
+                       $("#codeTextarea1").val(data.data);
                    }
                })
            }) 
