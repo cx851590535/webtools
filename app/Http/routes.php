@@ -12,4 +12,6 @@
 */
 
 Route::get('/', 'HomeController@index');
-Route::get('/json/decode','JsonController@decode');
+Route::get('json/decode','JsonController@decode');
+//模拟请求
+Route::get('http/request','RequestController@index');

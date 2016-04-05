@@ -54,7 +54,7 @@
                     <a href="#" id="httputil" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                         网络<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="/httppost/" target="_blank">在线模拟发送HTTP请求</a></li>
+                        <li><a href="/http/request" target="_blank">在线模拟发送HTTP请求</a></li>
                         <li><a id="http2" href="/httputil/httppost2/">支持返回结果的HTTP请求</a></li>
                         <li><a href="/httputil/getip/">获取你的IP</a></li>
                         <li><a href="/httputil/queryip/" id="queryip">获取IP信息</a></li>

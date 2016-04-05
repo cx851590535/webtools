@@ -4,10 +4,7 @@
         <title>在线小工具</title>
 
         
-        <link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
-        <link href="/css/base.css" rel="stylesheet">
-        <script src="/js/jquery-1.12.2.min.js"></script>
-        <script src="/bootstrap/js/bootstrap.min.js"></script>
+        @include('layout.header')
         <style>
             html, body {
                 height: 100%;
@@ -35,45 +32,6 @@
             }
         </style>
         <script type="text/javascript">
-            var lineObjOffsetTop = 6;
-            function createTextAreaWithLines(id){
-                var el = document.createElement('DIV');
-                var ta = document.getElementById(id);
-                ta.parentNode.insertBefore(el,ta);
-                el.appendChild(ta);
-                el.className='textAreaWithLines';
-                el.style.width = (ta.offsetWidth + 30) + 'px';
-                ta.style.position = 'absolute';
-                ta.style.left = '30px';
-                el.style.height = (ta.offsetHeight + 2) + 'px';
-                el.style.overflow='hidden';
-                el.style.position = 'relative';
-                el.style.width = (ta.offsetWidth + 30) + 'px';
-                var lineObj = document.createElement('DIV');
-                lineObj.style.position = 'absolute';
-                lineObj.style.top = lineObjOffsetTop + 'px';
-                lineObj.style.left = '0px';
-                lineObj.style.width = '27px';
-                el.insertBefore(lineObj,ta);
-                lineObj.style.textAlign = 'right';
-                lineObj.className='lineObj';
-                var string = '';
-                for(var no=1;no<parseInt($("#"+id).height()/12);no++){
-                    if(string.length>0)string = string + '<br>';
-                    string = string + no;
-                }
-                ta.onkeydown = function() { positionLineObj(lineObj,ta); };
-                ta.onmousedown = function() { positionLineObj(lineObj,ta); };
-                ta.onscroll = function() { positionLineObj(lineObj,ta); };
-                ta.onblur = function() { positionLineObj(lineObj,ta); };
-                ta.onfocus = function() { positionLineObj(lineObj,ta); };
-                ta.onmouseover = function() { positionLineObj(lineObj,ta); };
-                lineObj.innerHTML = string;
-            }
-            function positionLineObj(obj,ta)
-            {
-                obj.style.top = (ta.scrollTop * -1 + lineObjOffsetTop) + 'px';
-            }
             $(function () {
                 bodyH = $("body").height();
                 $(".heightele").height(bodyH*0.37);
@@ -88,9 +46,7 @@
     <div class="bs-docs-header">
             <div class="row wider">
                 <div class="col-md-11">
-                    <textarea class="form-control heightele jsontext" id="codeTextarea">
-
-                    </textarea>
+                    <textarea class="form-control heightele jsontext" id="codeTextarea"></textarea>
                 </div>
                 <div class="col-md-11">
                     <br>
@@ -113,9 +69,9 @@
                 </div>
                 <div class="col-md-11">
 
-                    <textarea class="form-control heightele" id="codeTextarea1" readonly>
+                    <div class="form-control heightele" id="codeTextarea1" style="overflow-y: auto;">
 
-                    </textarea>
+                    </div>
                 </div>
             </div>
     </div>
@@ -127,13 +83,16 @@
         $(function () {
            $("#jsondecode").click(function () {
                var text = $(".jsontext").eq(0).val();
-               alert(text);
                $.ajax({
                    type:'get',
                    data:'text='+text,
                    url:'/json/decode',
                    success: function (data) {
-                       $("#codeTextarea1").val(data.data);
+                       str=JSON.stringify(data.data);
+                       str = str.replace(/\,/g,'</br>');
+                       str = str.replace(/\{/g,'<p>{');
+                       str = str.replace(/\}/g,'</p>}');
+                       $("#codeTextarea1").html(str);
                    }
                })
            }) 
