@@ -102,17 +102,15 @@
                }
                if(type){
                    $.ajax({
-                       type:type,
-                       data:data,
-                       dataType : "jsonp",
-                       contentType: "application/jsonp; charset=utf-8",
-                       url:url,
+                       type:'get',
+                       data:'url='+url+'&type='+type+'&data='+data,
+                       url:'/http/getrequest',
                        success: function (data) {
-                           alert(data);
-                           str=JSON.stringify(data);
+                           str=JSON.stringify(data.data);
                            str = str.replace(/\,/g,'</br>');
                            str = str.replace(/\{/g,'<p>{');
                            str = str.replace(/\}/g,'</p>}');
+                           alert(str);
                            $("#codeTextarea1").html(str);
                        },
                        error: function (XMLHttpRequest, textStatus, errorThrown) {

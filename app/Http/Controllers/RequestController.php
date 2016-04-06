@@ -6,13 +6,12 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Input;
 
 class RequestController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return Response
+     * 页面
      */
     public function index()
     {
@@ -20,13 +19,51 @@ class RequestController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * 获取请求
      *
      * @return Response
      */
-    public function create()
+    public function getRequest()
     {
         //
+        $type = Input::get('type','get');
+        $url = Input::get('url','');
+        $data = Input::get('type','data');
+        if(!$url){
+            return '地址错误';
+        }
+        if($type == 'get'){
+            //get请求　　
+            //初始化
+            $ch = curl_init();//设置选项，包括URL
+            curl_setopt($ch, CURLOPT_URL, $url.'?'.$data);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($ch, CURLOPT_HEADER, 0);
+            //执行并获取HTML文档内容
+            $output = curl_exec($ch);
+            //释放curl句柄
+            curl_close($ch);
+            //打印获得的数据
+            return $output;
+        }else{
+            //post请求
+            $dataArr = explode('&',$data);
+            foreach($dataArr as $value){
+                
+            }
+            $post_data = array ("username" => "bob","key" => "12345");
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            // post数据
+            curl_setopt($ch, CURLOPT_POST, 1);
+            // post的变量
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
+            $output = curl_exec($ch);
+            curl_close($ch);
+            //打印获得的数据
+            print_r($output);
+        }
     }
 
     /**
