@@ -95,6 +95,9 @@
            $("#jsonencode").click(function () {
                var url = $("#url").val();
                var data = $("#data").val();
+               if(data){
+                   data = data.replace(/\&/g,'|');
+               }
                var type = $("#type").val();
                if(!url){
                    alert('请输入请求地址！');
@@ -103,15 +106,16 @@
                if(type){
                    $.ajax({
                        type:'get',
-                       data:'url='+url+'&type='+type+'&data='+data,
+                       data:'url='+url+'&typenew='+type+'&data='+data,
                        url:'/http/getrequest',
                        success: function (data) {
-                           str=JSON.stringify(data.data);
+                           alert(data);
+                          /* str=JSON.stringify(data.data);
                            str = str.replace(/\,/g,'</br>');
                            str = str.replace(/\{/g,'<p>{');
                            str = str.replace(/\}/g,'</p>}');
-                           alert(str);
-                           $("#codeTextarea1").html(str);
+                           alert(str);*/
+                           $("#codeTextarea1").html(data);
                        },
                        error: function (XMLHttpRequest, textStatus, errorThrown) {
                            alert(errorThrown);
