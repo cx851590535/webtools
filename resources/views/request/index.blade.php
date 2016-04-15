@@ -80,9 +80,9 @@
                 </div>
                 <div class="col-md-11">
 
-                    <div class="form-control heightele" id="codeTextarea1" style="overflow-y: auto;">
+                    <pre class="form-control heightele" id="codeTextarea1" style="overflow-y: auto;">
 
-                    </div>
+                    </pre>
                 </div>
             </div>
     </div>
@@ -109,13 +109,24 @@
                        data:'url='+url+'&typenew='+type+'&data='+data,
                        url:'/http/getrequest',
                        success: function (data) {
-                           alert(data);
-                          /* str=JSON.stringify(data.data);
-                           str = str.replace(/\,/g,'</br>');
-                           str = str.replace(/\{/g,'<p>{');
-                           str = str.replace(/\}/g,'</p>}');
-                           alert(str);*/
-                           $("#codeTextarea1").html(data);
+                        console.log(data);
+                           $.ajax({
+                               type:'post',
+                               data:'text='+data+'&_token={{csrf_token()}}',
+                               url:'/json/decode',
+                               success: function (data) {
+                                   if(data.code==200){
+                                       str=JSON.stringify(data.data);
+                                       str = str.replace(/\,/g,'</br>');
+                                       str = str.replace(/\{/g,'{<p>');
+                                       str = str.replace(/\}/g,'</p>}');
+                                      $("#codeTextarea1").html(str);
+                                   }else{
+                                       str = data.data;
+                                      $("#codeTextarea1").text(str);
+                                   }
+                               }
+                           });
                        },
                        error: function (XMLHttpRequest, textStatus, errorThrown) {
                            alert(errorThrown);

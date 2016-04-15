@@ -11,22 +11,22 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" id="jsontools" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">JSON相关<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="/">格式化校验</a>
+                        <li><a href="/">Json解析</a>
                         </li>
-                        <li><a href="/jsonviewernew/" target="_blank">JSON视图</a>
+                        <li><a href="http://www.bejson.com/jsonview2/" target="_blank">JSON视图</a>
                         </li>
-                        <li><a href="/zhuanyi/">JSON压缩转义</a>
+                        <li><a href="#">JSON压缩转义</a>
                         </li>
-                        <li><a href="/json2javapojo/">JSON生成Java实体类</a>
+                        <li><a href="#">JSON生成Java实体类</a>
                         </li>
-                        <li><a href="/convert/json2csharp/" id="json2csharp">JSON生成C#实体类</a>
+                        <li><a href="#" id="json2csharp">JSON生成C#实体类</a>
                         </li>
-                        <li><a href="/jsoneditoronline/">JSON在线编辑器</a>
+                        <li><a href="#">JSON在线编辑器</a>
                         </li>
-                        <li><a href="/color/">JSON着色</a></li>
-                        <li><a href="/xml2json/">XML-JSON互转</a></li>
-                        <li><a href="/jsontools/json2get/" id="json2get">JSON和GET请求字符串互转</a></li>
-                        <li><a href="/json/col2json/" id="excel2json">Excel转Json</a></li>
+                        <li><a href="#">JSON着色</a></li>
+                        <li><a href="#">XML-JSON互转</a></li>
+                        <li><a href="#" id="json2get">JSON和GET请求字符串互转</a></li>
+                        <li><a href="#" id="excel2json">Excel转Json</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -34,7 +34,7 @@
                         编码/加密<span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="/enc/base64/">Base64编码、解码</a></li>
-                        <li><a href="/enc/md5/">MD5加密</a></li>
+                        <li><a href="/enc/md5">MD5加密</a></li>
                         <li><a href="/enc/sha/">SHA加密</a></li>
                         <li><a href="/enc/escape/">Escape编码</a></li>
                         <li><a href="/enc/urlencode/" id="urlEncode">URL编码</a></li>
@@ -54,13 +54,10 @@
                     <a href="#" id="httputil" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                         网络<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="/http/request" target="_blank">在线模拟发送HTTP请求</a></li>
-                        <li><a id="http2" href="/httputil/httppost2/">支持返回结果的HTTP请求</a></li>
-                        <li><a href="/httputil/getip/">获取你的IP</a></li>
-                        <li><a href="/httputil/queryip/" id="queryip">获取IP信息</a></li>
+                        <li><a href="/http/request" target="_blank">在线模拟Post\Get请求</a></li>
+                        <li><a href="/httputil/getip/">获取你的IP信息</a></li>
                         <li><a href="/httputil/ip2addr/" id="ip2addr">IP定位周边信息</a></li>
                         <li><a href="/httputil/clientinfo/" id="clientinfo">获取您的浏览器信息</a></li>
-                        <li><a href="/httputil/useragent/" id="useragent">常用USER_AGENT</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">

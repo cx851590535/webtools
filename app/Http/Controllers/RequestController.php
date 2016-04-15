@@ -46,16 +46,25 @@ class RequestController extends Controller
             //释放curl句柄
             curl_close($ch);
             //打印获得的数据
-            return $output;
+            if($output){
+                return $output;
+            }else{
+                return response()->json('接口不可用');
+            }
+
         }else{
             //post请求
-            $dataArr = explode('&',$data);
-            foreach($dataArr as $value){
-                $newdata = explode('=',$value);
-                dd($newdata);
-                $post_data[$newdata[0]] = $newdata[1];
-                
+            if($data){
+                $dataArr = explode('&',$data);
+                foreach($dataArr as $value){
+                    $newdata = explode('=',$value);
+                    $post_data[$newdata[0]] = $newdata[1];
+                    
+                }
+            }else{
+                $post_data=[];
             }
+            
            // $post_data = array ("username" => "bob","key" => "12345");
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, $url);
@@ -67,7 +76,11 @@ class RequestController extends Controller
             $output = curl_exec($ch);
             curl_close($ch);
             //打印获得的数据
-            return $output;
+            if($output){
+                return $output;
+            }else{
+                return response()->json('接口不可用');
+            }
         }
     }
 

@@ -69,9 +69,9 @@
                 </div>
                 <div class="col-md-11">
 
-                    <div class="form-control heightele" id="codeTextarea1" style="overflow-y: auto;">
+                    <pre class="form-control heightele" id="codeTextarea1" style="overflow-y: auto;">
 
-                    </div>
+                    </pre>
                 </div>
             </div>
     </div>
@@ -84,14 +84,19 @@
            $("#jsondecode").click(function () {
                var text = $(".jsontext").eq(0).val();
                $.ajax({
-                   type:'get',
-                   data:'text='+text,
+                   type:'post',
+                   data:'text='+text+'&_token={{csrf_token()}}',
                    url:'/json/decode',
                    success: function (data) {
-                       str=JSON.stringify(data.data);
-                       str = str.replace(/\,/g,'</br>');
-                       str = str.replace(/\{/g,'<p>{');
-                       str = str.replace(/\}/g,'</p>}');
+                       if(data.code==200){
+                           str=JSON.stringify(data.data);
+                           str = str.replace(/\,/g,'</br>');
+                           str = str.replace(/\{/g,'{<p>');
+                           str = str.replace(/\}/g,'</p>}');
+                       }else{
+                           str = data.data;
+                       }
+
                        $("#codeTextarea1").html(str);
                    }
                })

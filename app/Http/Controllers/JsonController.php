@@ -18,7 +18,13 @@ class JsonController extends Controller
     {
         $text = $request->get('text');
         $data['code'] = 200;
-        $data['data'] = json_decode($text);
+        if(is_null(json_decode($text))){
+            $data['code'] = 400;
+            $data['data'] = $text;
+        }else{
+            $data['data'] = json_decode($text);
+        }
+
         return $data;
     }
 
