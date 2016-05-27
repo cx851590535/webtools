@@ -58,7 +58,10 @@ class RequestController extends Controller
                 $dataArr = explode('&',$data);
                 foreach($dataArr as $value){
                     $newdata = explode('=',$value);
-                    $post_data[$newdata[0]] = $newdata[1];
+                    if(count($newdata)){
+                        $post_data[$newdata[0]] = $newdata[1];
+                    }
+
                     
                 }
             }else{

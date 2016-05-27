@@ -17,15 +17,16 @@ class JsonController extends Controller
     public function decode(Request $request)
     {
         $text = $request->get('text');
-        $data['code'] = 200;
-        if(is_null(json_decode($text))){
+        return response()->json((json_decode($text)));
+        /*$data['code'] = 200;
+        if(empty(json_decode($text))){
             $data['code'] = 400;
             $data['data'] = $text;
         }else{
             $data['data'] = json_decode($text);
         }
 
-        return $data;
+        return $data;*/
     }
 
     /**
