@@ -32,11 +32,16 @@ class RequestController extends Controller
 
         $url = Input::get('url','');
         $data = Input::get('data','');
+        $agent = Input::get('agent','');
         $header = Input::get('header','');
-        $data = urldecode($data);
-        $header = urldecode($header);
-        if(!$url){
+        $data = str_replace("|","&",$data);
+        $header = str_replace("|","&",$header);
+        $agentArr = [];
+        if(empty($url)){
             return '地址错误';
+        }
+        if(!empty($agent)){
+            $agentArr = array("User-Agent"=>$agent);
         }
         if((substr($url, 0,4))!='http'){
             $url = 'http://'.$url;
@@ -53,7 +58,7 @@ class RequestController extends Controller
             $request  = $httpClient ->request('GET', $urlarr['path'],
               ['query'=>$data,
                 '_conditional'=>$header,
-                "headers"=>array("User-Agent"=>"test110/1.0")
+                "headers"=>$agentArr
               ]);
             $response = $request->getBody()->getContents();
             $response = json_decode($response);

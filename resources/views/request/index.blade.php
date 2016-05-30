@@ -50,9 +50,9 @@
 
         $(function () {
             bodyH = $("body").height();
-            $(".heightele").height(bodyH * 0.57);
+            //$(".heightele").height(bodyH * 0.57);
             $(".heightdata").height(bodyH * 0.1);
-            createTextAreaWithLines('codeTextarea1');
+            //createTextAreaWithLines('codeTextarea1');
         });
 
     </script>
@@ -112,9 +112,7 @@
                 </div>
                 <div class="col-md-11">
 
-                    <pre class="form-control heightele" id="codeTextarea1" style="overflow-y: auto;">
-
-                    </pre>
+                    <div  id="codeTextarea1" style="overflow-y: auto;"></div>
                 </div>
             </div>
         </div>
@@ -131,10 +129,12 @@
             var header = $("#header").val();
             var agent = $("#agent").val();
             if (data) {
-                data = encodeURI(data);
+                data = data.replace(/\&/g,'|');
+               // data = encodeURI(data);
             }
             if (header) {
-                header = encodeURI(header);
+                header = header.replace(/\&/g,'|');
+              //  header = encodeURI(header);
             }
             var type = $("#type").val();
             if (!url) {
@@ -144,11 +144,12 @@
             if (type) {
                 $.ajax({
                     type: 'get',
-                    data: 'url=' + url + '&typenew=' + type + '&data=' + data + '&header=' + header,
+                    data: 'url=' + url + '&typenew=' + type + '&data=' + data + '&header=' + header+ '&agent=' + agent,
                     url: '/http/getrequest',
                     success: function (data) {
                         console.log(data);
-                        $.ajax({
+                        $("#codeTextarea1").html(data);
+                       /* $.ajax({
                             type: 'post',
                             data: 'text=' + data + '&_token={{csrf_token()}}',
                             url: '/json/decode',
@@ -164,7 +165,7 @@
                                     $("#codeTextarea1").text(str);
                                 }
                             }
-                        });
+                        });*/
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
                         alert(errorThrown);
