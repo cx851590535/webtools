@@ -61,6 +61,7 @@
 <div id="wrapper">
     @include('layout.top')
     <div class="bs-docs-header" id="page-wrapper">
+        <br>
         <div class="row wider">
             <div class="col-md-11">
                 <input type="text" class="form-control" id="url" placeholder="链接地址">
@@ -74,6 +75,10 @@
             <div class="col-md-11">
                 <br>
                 <input type="text" class="form-control" id="header" placeholder="header">
+            </div>
+            <div class="col-md-11">
+                <br>
+                <input type="text" class="form-control" id="agent" placeholder="User-Agent">
             </div>
             <div class="col-md-11">
                 <div class="col-md-11">
@@ -124,8 +129,12 @@
             var url = $("#url").val();
             var data = $("#data").val();
             var header = $("#header").val();
+            var agent = $("#agent").val();
             if (data) {
-                data = data.replace(/\&/g, '|');
+                data = encodeURI(data);
+            }
+            if (header) {
+                header = encodeURI(header);
             }
             var type = $("#type").val();
             if (!url) {

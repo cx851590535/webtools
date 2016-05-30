@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\UrlParmToArray;
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -30,27 +32,32 @@ class RequestController extends Controller
 
         $url = Input::get('url','');
         $data = Input::get('data','');
-        $data = str_replace("|","&",$data);
+        $header = Input::get('header','');
+        $data = urldecode($data);
+        $header = urldecode($header);
         if(!$url){
             return '地址错误';
         }
+        if((substr($url, 0,4))!='http'){
+            $url = 'http://'.$url;
+        }
+        $urlarr = parse_url($url);
+        if(!empty($header)){
+            $header = UrlParmToArray::StrToArr($header);
+        }
+        //$header['User-Agent'] = "test110/1.0";
         if($type == 'get'){
             //get请求　　
             //初始化
-            $ch = curl_init();//设置选项，包括URL
-            curl_setopt($ch, CURLOPT_URL, $url.'?'.$data);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-            curl_setopt($ch, CURLOPT_HEADER, 0);
-            //执行并获取HTML文档内容
-            $output = curl_exec($ch);
-            //释放curl句柄
-            curl_close($ch);
-            //打印获得的数据
-            if($output){
-                return $output;
-            }else{
-                return response()->json('接口不可用');
-            }
+            $httpClient = new Client(['base_uri'=>$urlarr['scheme'].'://'.$urlarr['host']]);
+            $request  = $httpClient ->request('GET', $urlarr['path'],
+              ['query'=>$data,
+                '_conditional'=>$header,
+                "headers"=>array("User-Agent"=>"test110/1.0")
+              ]);
+            $response = $request->getBody()->getContents();
+            $response = json_decode($response);
+            return dump($response);
 
         }else{
             //post请求
