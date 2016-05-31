@@ -69,7 +69,7 @@
 
             <div class="col-md-11">
                 <br>
-                <textarea class="form-control heightdata" id="data" placeholder="数据"></textarea>
+                <input type="text" class="form-control" id="data" placeholder="参数数据">
             </div>
 
             <div class="col-md-11">
@@ -88,9 +88,10 @@
                         <div class="col-md-3">
                             <div class="btn-group btn-group-justified" role="group" aria-label="Justified button group">
                                 <select class="form-control" id="type">
-                                    <option value="">请选择请求方式</option>
                                     <option value="get">GET</option>
                                     <option value="post">POST</option>
+                                    <option value="post">PUT</option>
+                                    <option value="post">DELETE</option>
                                 </select>
                             </div>
 

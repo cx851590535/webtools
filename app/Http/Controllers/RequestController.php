@@ -50,11 +50,10 @@ class RequestController extends Controller
         if(!empty($header)){
             $header = UrlParmToArray::StrToArr($header);
         }
-        //$header['User-Agent'] = "test110/1.0";
+        //初始化
+        $httpClient = new Client(['base_uri'=>$urlarr['scheme'].'://'.$urlarr['host']]);
         if($type == 'get'){
             //get请求　　
-            //初始化
-            $httpClient = new Client(['base_uri'=>$urlarr['scheme'].'://'.$urlarr['host']]);
             $request  = $httpClient ->request('GET', $urlarr['path'],
               ['query'=>$data,
                 '_conditional'=>$header,
@@ -66,19 +65,20 @@ class RequestController extends Controller
 
         }else{
             //post请求
-            if($data){
-                $dataArr = explode('&',$data);
-                foreach($dataArr as $value){
-                    $newdata = explode('=',$value);
-                    if(count($newdata)){
-                        $post_data[$newdata[0]] = $newdata[1];
-                    }
-
-                    
-                }
+            if(!empty($data)){
+                $post_data = UrlParmToArray::StrToArr($data);
             }else{
                 $post_data=[];
             }
+            $request  = $httpClient ->request('POST', $urlarr['path'],
+              ['form_params'=>$post_data,
+                '_conditional'=>$header,
+                "headers"=>$agentArr
+              ]);
+            $response = $request->getBody()->getContents();
+            $response = json_decode($response);
+            return dump($response);
+
             
            // $post_data = array ("username" => "bob","key" => "12345");
             $ch = curl_init();

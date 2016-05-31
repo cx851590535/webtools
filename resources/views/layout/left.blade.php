@@ -2,7 +2,7 @@
     <div class="sidebar-nav navbar-collapse">
         <ul class="nav" id="side-menu">
             <li>
-                <a href="#"><i class="fa fa-envelope-o fa-fw"></i> JSON相关<span class="fa arrow"></span></a>
+                <a href="#"><i class="fa fa-rocket fa-fw"></i> JSON相关<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li><a href="/json/index">Json解析</a>
                     </li>
@@ -24,7 +24,7 @@
                 <!-- /.nav-second-level -->
             </li>
             <li>
-                <a href="#"><i class="fa fa-user fa-fw"></i> 编码/加密<span class="fa arrow"></span></a>
+                <a href="#"><i class="fa fa-jsfiddle fa-fw"></i> 编码/加密<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li><a href="/enc/base64/">Base64编码、解码</a></li>
                     <li><a href="/enc/md5">MD5加密</a></li>
@@ -46,7 +46,7 @@
                 <!-- /.nav-second-level -->
             </li>
             <li>
-                <a href="#"><i class="fa fa-comments fa-fw"></i> 网络请求<span class="fa arrow"></span></a>
+                <a href="#"><i class="fa fa-globe fa-fw"></i> 网络请求<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li><a href="/http/request" target="_blank">在线模拟Post\Get请求</a></li>
                     <li><a href="/httputil/getip/">获取你的IP信息</a></li>
@@ -56,7 +56,7 @@
                 <!-- /.nav-second-level -->
             </li>
             <li>
-                <a href="#"><i class="fa fa-money fa-fw"></i> 前端相关<span class="fa arrow"></span></a>
+                <a href="#"><i class="fa  fa-file-image-o fa-fw"></i> 前端相关<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li><a href="/ui/borderradius/" id="borderradius">在线生成圆角图片</a></li>
                     <li><a href="/ui/icomaker/" id="icomaker">ICO图标在线转换工具</a></li>
@@ -74,7 +74,7 @@
                 <!-- /.nav-second-level -->
             </li>
             <li>
-                <a href="#"><i class="fa fa-money fa-fw"></i> 转换<span class="fa arrow"></span></a>
+                <a href="#"><i class="fa fa-exchange fa-fw"></i> 转换<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li><a href="/convert/map/" id="mapdw">在线地图经纬度定位换算</a></li>
                     <li><a href="/ui/px2em/" id="px2em">px转em,em转px</a></li>
@@ -96,7 +96,7 @@
             </li>
 
             <li>
-                <a href="#"><i class="fa fa-money fa-fw"></i> 其它<span class="fa arrow"></span></a>
+                <a href="#"><i class="fa fa-puzzle-piece fa-fw"></i> 其它<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li><a href="/othertools/findelement/" id="findbyxpath">寻找图片、链接或xpath寻找元素</a></li>
                     <li><a href="/othertools/finddif/">文字对比找不同处</a></li>
@@ -110,7 +110,7 @@
             </li>
 
             <li>
-                <a href="#"><i class="fa fa-money fa-fw"></i> 接口API<span class="fa arrow"></span></a>
+                <a href="#"><i class="fa fa-google-plus fa-fw"></i> 接口API<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li><a id="chargeapi" target="_blank"
                            href="http://www.jisuapi.com/?hmsr=bejsonnav&hmpl=&hmcu=&hmkw=&hmci=" rel="external nofollow"
@@ -121,7 +121,7 @@
             </li>
 
             <li>
-                <a href="#"><i class="fa fa-money fa-fw"></i> 文档<span class="fa arrow"></span></a>
+                <a href="#"><i class="fa fa-file-word-o fa-fw"></i> 文档<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li><a id="apliayapi" href="http://wiki.open.qq.com/wiki/%E9%A6%96%E9%A1%B5" target="_blank"
                            rel="external nofollow">腾讯开发平台</a></li>
@@ -153,7 +153,7 @@
 
 
             <li>
-                <a href="#"><i class="fa fa-money fa-fw"></i> 第三方平台工具<span class="fa arrow"></span></a>
+                <a href="#"><i class="fa fa-sitemap fa-fw"></i> 第三方平台工具<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li><a rel="external nofollow" target="_blank" href="http://mp.weixin.qq.com/debug">微信公众平台调试工具</a></li>
                     <li><a id="coupon" rel="external nofollow" target="_blank" href="http://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=cardsign">微信卡券JSAPI签名校验工具</a></li>
