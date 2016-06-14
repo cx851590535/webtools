@@ -1,0 +1,28 @@
+.text_no_border{
+    border:0px;
+    background:none;
+    width: 100%;
+}
+table,input{
+    font-size: 12px;
+}
+#side-menu>li>a:hover,.nav-second-level>li>a:hover{
+    background-color: #232222;
+    color: #60A7E4;
+}
+#side-menu>li>a:focus,.nav-second-level>li>a:focus{
+    background-color: #323232;
+    color: #337AB7;
+}
+.navbar-default{
+    background-color: #232222 !important;
+}
+.form-control,.btn-default{
+    background-color: #484747;
+    color:#1ab7ea;
+}
+.btn-default:hover {
+    background-color: #595858;
+    color: #1ab7ea;
+    border-color: #1ab7ea;
+}
