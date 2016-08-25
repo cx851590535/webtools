@@ -20,3 +20,5 @@ Route::get('http/getrequest','RequestController@getRequest');
 
 //加密
 Route::get('enc/md5','EncryptController@md5Enc');
+Route::get('enc/base64','EncryptController@base64');
+

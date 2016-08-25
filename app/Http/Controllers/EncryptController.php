@@ -23,9 +23,10 @@ class EncryptController extends Controller
      *
      * @return Response
      */
-    public function create()
+    public function base64()
     {
         //
+        return view('encrypt.base64');
     }
 
     /**
